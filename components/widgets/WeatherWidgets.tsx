@@ -241,15 +241,15 @@ export default function WeatherWidgets({
         </CardHeader>
         <CardContent>
           <p>
-            {data.rain?.["1h"] || 0}mm <br></br>in the last 3h
+            {data.rain?.["3h"] || 0}mm <br></br>in the last 3h
           </p>
         </CardContent>
         <CardFooter>
           <p>
-            {data.rain?.["1h"] !== undefined
-              ? data.rain["1h"] <= 0.2
+            {data.rain?.["3h"] !== undefined
+              ? data.rain["3h"] <= 0.2
                 ? "Light rain or drizzle. An umbrella may come in handy."
-                : data.rain["1h"] <= 2.5
+                : data.rain["3h"] <= 2.5
                 ? "Moderate rain."
                 : "Heavy rain."
               : "Conditions are dry."}
