@@ -21,7 +21,8 @@ export async function GET(request: Request) {
 
   const res = await fetch(
     // `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt=${NUMBER_OF_DAYS}&units=metric&appid=${appid}`,
-    `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude=${part}&units=${units}&lang=${lang}&appid=${appid}`,
+    // `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=${part}&units=${units}&lang=${lang}&appid=${appid}`,
+    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&lang=${lang}&appid=${appid}`,
     {
       next: { revalidate: 900 },
     }

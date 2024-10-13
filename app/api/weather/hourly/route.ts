@@ -4,6 +4,8 @@ export async function GET(request: Request) {
   const lon = searchParams.get("lon")
   const appid = searchParams.get("appid")
   const HOURS = 23
+  const units = 'metric' //metric | imperial
+  const lang = 'en'
 
   if (!appid) {
     return Response.json(
@@ -16,7 +18,9 @@ export async function GET(request: Request) {
   }
 
   const res = await fetch(
-    `https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${lat}&lon=${lon}&cnt=${HOURS}&units=metric&appid=${appid}`,
+    // `https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${lat}&lon=${lon}&cnt=${HOURS}&units=metric&appid=${appid}`,
+    // `https://pro.openweathermap.org/data/2.5/forecast/hourly?lat=${lat}&lon=${lon}&cnt=${HOURS}&units={units}&appid=${appid}`,
+    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=${units}&lang=${lang}&appid=${appid}`,
     {
       next: { revalidate: 900 },
     }

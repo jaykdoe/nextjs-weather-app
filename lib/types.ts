@@ -76,7 +76,7 @@ export type HourlyForecastData = {
   visibility: number
   pop: number
   rain?: {
-    "1h": number
+    "3h": number
   }
   sys: {
     pod: "d" | "n"
