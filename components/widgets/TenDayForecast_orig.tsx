@@ -1,4 +1,4 @@
-import { ForecastData, TenDayForecastData, HourlyForecastData, OpenWeatherData } from "@/lib/types"
+import { ForecastData, TenDayForecastData } from "@/lib/types"
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card"
 import { convertToDate } from "@/lib/dateUtils"
 import { TemperatureRange } from "../ui/temperature-range"
@@ -11,10 +11,8 @@ interface TenDayForecastProps {
 
 export default function TenDayForecast({ data }: TenDayForecastProps) {
   const temperatures = data.list.map((item: ForecastData) => item.temp)
-  const minTemperature = Math.min(...temperatures.map((temp) => temp))
-  const maxTemperature = Math.max(...temperatures.map((temp) => temp))
-  // const minTemperature = Math.min(...temperatures.map((temp) => temp.min))
-  // const maxTemperature = Math.max(...temperatures.map((temp) => temp.max))
+  const minTemperature = Math.min(...temperatures.map((temp) => temp.min))
+  const maxTemperature = Math.max(...temperatures.map((temp) => temp.max))
 
   return (
     <>
@@ -123,18 +121,15 @@ export default function TenDayForecast({ data }: TenDayForecastProps) {
                 <div className="flex w-[60%] flex-row gap-2 overflow-hidden">
                   <div className="flex w-full select-none flex-row items-center justify-between gap-2 pr-2 text-sm">
                     <p className="flex w-[3rem] min-w-fit justify-end text-neutral-600 dark:text-neutral-400">
-                      {/* {Math.floor(item.temp.min)}&deg; */}
-                      {Math.floor(item.temp)}&deg;
+                      {Math.floor(item.temp.min)}&deg;
                     </p>
                     <TemperatureRange
                       min={minTemperature}
                       max={maxTemperature}
-                      value={[item.temp, item.temp]}
-                      // value={[item.temp.min, item.temp.max]}
+                      value={[item.temp.min, item.temp.max]}
                     />
                     <p className="flex w-[3rem] min-w-fit justify-end">
-                      {/* {Math.floor(item.temp.max)}&deg; */}
-                      {Math.floor(item.temp)}&deg;
+                      {Math.floor(item.temp.max)}&deg;
                     </p>
                   </div>
                 </div>

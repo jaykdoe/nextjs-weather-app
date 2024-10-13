@@ -26,6 +26,9 @@ export type OpenWeatherData = {
     temp_max: number
     pressure: number
     humidity: number
+    sea_level: number
+    grnd_level: number
+    temp_kf: number
   }
   visibility: number
   wind: {
@@ -58,6 +61,9 @@ export type HourlyForecastData = {
     temp_max: number
     pressure: number
     humidity: number
+    sea_level: number
+    grnd_level: number
+    temp_kf: number
   }
   weather: {
     id: number
@@ -177,7 +183,7 @@ export type ForecastData = {
   dt: number
   sunrise: number
   sunset: number
-  temp: Temperature
+  temp: Temperature | any | null
   feels_like: FeelsLike
   pressure: number
   humidity: number
